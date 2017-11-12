@@ -1,0 +1,115 @@
+<!-- STRIPE STEP 1  put this form down-->
+<!-- put down the publishable key from your account -->
+<!-- NEXT: go to base.html -->
+{% extends "base.html" %}
+
+<!--  STEP 3: Add a jquery block-->
+<!-- NEXT:  go back to base.html-->
+
+{% block content %}
+
+
+<h1 style = "text-align: center">Shop</h1>
+
+<p style="text-align: center"><a href="#" style="text-align: center" class="toggle-btn">Toggle Shopping Cart</a></p>
+
+
+<div class ="shopping-cart-wrapper">
+<h3 style = "text-align: center">Cart Total: {{total}}</h3>
+
+{% for item in items_in_cart %}
+
+<div style="text-align:center">
+<p>Name: {{item.instanceOfItem.name}} || Price: {{item.instanceOfItem.price}} || Quantity {{item.quantity}}
+
+<form action="/update/{{item.id}}" method="POST" class="the_form">
+  {% csrf_token %}
+<select name="quantity">
+     <option value=1.0>1</option>
+      <option value=2.0>2</option>
+      <option value=3.0>3</option>
+       <option value=4.0>4</option>
+</select>
+<input type="submit" value="Change Quantity" class="btn btn-primary btn-sm"/>
+<a href="/remove/{{item.id}}" class="btn btn-secondary btn-sm">Remove</a>
+</form>
+
+
+
+</p>
+</div>
+{% endfor %}
+
+<div style="text-align:center">
+<form action="/checkout" method="POST">
+  {% csrf_token %}
+   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+       data-key="pk_test_JeThQEKbOQG8Q4WnPgkJDXJY" # Make sure to wrap the variable name with double {}
+       data-amount={{stripe_total}}
+       data-name="Shop"
+       data-description="Checkout"
+       data-email=""
+       data-shipping-address="true"
+       data-billingAddress="true"
+       data-image=""
+       data-locale="auto"></script>
+</form>
+
+
+
+</div>
+
+
+
+<!--  Below is shopping cart wrapper end-->
+</div>
+</div>
+
+<!--  -->
+
+<!-- Modal Window End -->
+
+
+<div class="row ah-row">
+
+   {% for x in the_items %}
+   <div class="col-md-3">
+    <div class="product-wrapper">
+  <img src='{{ x.image.url }}' height= "200px" id="the_pic">
+   <p  class="product-text">{{x.name}}</p>
+  <p class="product-text">{{x.price}}</p>
+
+  <form action="/addToCart/{{x.id}}" method="POST" style="text-align: center">
+    {% csrf_token %}
+  <select name="quantity">
+       <option value=1.0>1</option>
+        <option value=2.0>2</option>
+        <option value=3.0>3</option>
+         <option value=4.0>4</option>
+  </select>
+  <input type="submit" value="Add to Cart" class="btn btn-primary btn-sm"/>
+  </form>
+</div>
+</div>
+  {% endfor %}
+
+
+
+</div>
+
+
+
+<!-- This is where I will put the stripe elements form -->
+<!-- <div id="form" class="modal" style="display: none;">
+
+</div>
+ -->
+
+
+
+
+
+
+
+
+{% endblock %}

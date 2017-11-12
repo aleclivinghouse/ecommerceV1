@@ -28,10 +28,16 @@ urlpatterns = [
     url(r'^about/$', profile_views.about, name='about'),
     url(r'^profile/$', profile_views.userProfile, name='profile'),
     url(r'^payment_form/$', checkout_views.payment_form, name='payment_form'),
+    # url(r'^shop/$', checkout_views.shop, name='shop'),
+    url(r'^shop1/$', checkout_views.shop1, name='shop1'),
     url(r'^checkout$', checkout_views.checkout, name='checkout_page'),
+    url(r'^update/(?P<id>\d+)$', checkout_views.update, name='update'),
+    url(r'^remove/(?P<id>\d+)$', checkout_views.remove, name='remove'),
     url(r'^contact/$', contact_views.contact, name='contact'),
-     url(r'^accounts/', include('allauth.urls')),
+    url(r'^addToCart/(?P<id>\d+)$', checkout_views.addToCart, name="addToCart"),
+    url(r'^accounts/', include('allauth.urls')),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

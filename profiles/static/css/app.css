@@ -1,0 +1,79 @@
+button {
+  background-color: #0080ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+h1 {
+  color: purple;
+}
+
+.stripe-button-el span {
+  color: green;
+}
+
+.stripe-button {
+  color: green;
+}
+
+
+.checkout-button {
+  padding: 5px;
+  background-color: blue;
+  border-radius: 5px;
+  color: white;
+}
+
+
+div.shopping-cart-wrapper {
+  background-color: #e6e6e6;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+
+.nav-link {
+  color: white;
+}
+
+.navbar-brand {
+  color: purple;
+}
+
+.product-wrapper {
+  padding: 20px;
+}
+
+div.col-md-10 {
+  margin: auto;
+}
+
+.pic {
+  margin: auto;
+}
+
+img#the_pic {
+  display: inline-block;
+  margin: auto;
+}
+
+
+div.col-md-3 {
+  margin: auto;
+  text-align: center;
+  font-weight: bold;
+
+}
+
+.ah-row {
+  margin: auto;
+}
+
+.product-wrapper {
+}
+
+
+.the-container {
+  background-color: #f6f6f6
+}

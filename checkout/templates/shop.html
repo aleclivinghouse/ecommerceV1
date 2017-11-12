@@ -1,0 +1,30 @@
+<!-- STRIPE STEP 1  put this form down-->
+<!-- put down the publishable key from your account -->
+<!-- NEXT: go to base.html -->
+
+{% extends "base.html" %}
+
+<!--  STEP 3: Add a jquery block-->
+<!-- NEXT:  go back to base.html-->
+
+
+
+{% block content %}
+
+
+<h1 style = "text-align: center">Shop here</h1>
+<h3 style = "text-align: center">Items in cart </h3>
+<h3 style = "text-align: center">Cart Total: {{total}}</h3>
+
+
+ {% for x in the_items %}
+ <p> Product Name: {{x.name}}</p>
+ <p> Product Brand:{{x.brand}}</p>
+<p>Product description:{{x.description}}</p>
+<p>Product price: {{x.price}}</p>
+<p class="pic"><img src='{{ x.image.url }}'></p>
+<button><a href="/addToCart/{{x.id}}">Add to cart</a></button>
+
+{% endfor %}
+
+{% endblock %}

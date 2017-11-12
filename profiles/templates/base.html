@@ -1,60 +1,77 @@
 {% load staticfiles %}
+<!DOCTYPE html>
 <html>
     <head>
       <title>ecommerce</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/app.css' %}">
+        <link rel="stylesheet" href="{% static 'css/jquery.modal.css' %}">
+
+          <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" data-rel-css="" />
+          <link rel="stylesheet" href="{% static 'css/example5.css' %}">
+
+            <script src="{% static 'js/index.js' %}" data-rel-js></script>
+            <script type="text/javascript" src="https://js.stripe.com/v3"></script>
     </head>
-    <body>
-      <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+
+
+     <nav class="navbar navbar-expand-lg navbar-dar bg-primary">
+      <a class="navbar-brand" href="/">Digi Food</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">Navbar</a>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
-          <a class="nav-item nav-link" href="{% url 'contact' %}">Contact</a>
-          {% if not request.user.is_authenticated %}
-          <a class="nav-item nav-link disabled" href="{% url 'account_login' %}">Login</a>
-          <a class="nav-item nav-link disabled" href="{% url 'account_signup' %}">Signup</a>
-          {% else %}
-            <a class="nav-item nav-link disabled" href="{% url 'account_logout' %}">Logout</a
-          {% endif %}
-        </div>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shop1' %}">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">Customer Support</a>
+          </li>
+            {% if not request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_signup' %}">Signup</a>
+          </li>
+             {% else %}
+             <li class="nav-item">
+               <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+             </li>
+                {% endif %}
+        </ul>
+
       </div>
     </nav>
 
 
-    <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
-            </div>
-        </div>
-    </div>
-      <script type="text/javascript" src="https://js.stripe.com/v3"></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+
+<div class="the-container">
+    <div class="content container ">
+           <div class="row">
+               <div class="col-md-10">
+               {% block content %}
+               {% endblock %}
+               </div>
+           </div>
+       </div>
+  </div>
+
+   <script src="{% static 'js/l10n.js' %}" data-rel-js></script>
+
+
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src="{% static 'js/jquery.modal.js'  %}" charset="utf-8"></script>
+  <script src="{% static 'js/app.js'  %}" charset="utf-8"></script>
+    <script src="{% static 'js/example5.js'  %}" charset="utf-8"></script>
+
 <!--  Stripe STEP 2 put this in our project along with the stripe script tag above-->
 <!-- NEXT: go back to checkout.html -->
-
-{% block script %}
-
-{% endblock %}
-<!--Steep 4, add the following  -->
-<!--Next go to  checkout.html  -->
-
-<script>
-$( document ).ready(function() {
-  {% block jquery %}
-  {% endblock %}
-});
-</script>
 
     </body>
 </html>
