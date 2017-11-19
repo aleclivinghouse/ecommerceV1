@@ -33,8 +33,9 @@ div.shopping-cart-wrapper {
 }
 
 
-.nav-link {
+a.nav-link {
   color: white;
+  font-size: 14px;
 }
 
 .navbar-brand {

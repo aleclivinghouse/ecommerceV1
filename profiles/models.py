@@ -47,11 +47,15 @@ class shoppingCart(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
-
+class Order(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank=True)
 
 class itemInstance(models.Model):
     shopping_cart = models.ForeignKey(shoppingCart)
     instanceOfItem = models.ForeignKey(Item)
+    order = models.ForeignKey(Order, null=True, blank=True)
     quantity = models.DecimalField(max_digits=6, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

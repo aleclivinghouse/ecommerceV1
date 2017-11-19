@@ -11,8 +11,12 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_SECRET_KEY", "pk_YOUR_TEST_PUBLIC_KEY")
-STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "pk_YOUR_TEST_SECRET_KEY")
+# STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_SECRET_KEY", "pk_YOUR_TEST_PUBLIC_KEY")
+# STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "pk_YOUR_TEST_SECRET_KEY")
+
+STRIPE_PUBLIC_KEY = "pk_test_JeThQEKbOQG8Q4WnPgkJDXJY"
+STRIPE_SECRET_KEY = "sk_test_D0GIAXOoWgFXlCCiJHMP9tzC"
+
 
 EASYPOST_TEST_KEY = "kDBRViD7fuwv11a9miyn0w"
 

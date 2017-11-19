@@ -27,23 +27,25 @@ def checkout(request):
     _the_Stripe = userStripe.objects.get(user__id = userId)
     customer_id = _the_Stripe.stripe_id
 
-
-
-
-
-
     if request.method == "POST":
-        token  = request.POST.get("stripeToken")
+         token = request.POST.get("stripeToken")
+
+
     try:
         customer = stripe.Customer.retrieve(customer_id)
-        customer.sources.create(source=token)
+        # customer.sources.create(source=token)
 
-
-        #this is where we create the cutomer
         userId = request.user.id
-
         #now we have to get the item instances in the shopping cart
         cart = shoppingCart.objects.get(user__id = userId)
+
+
+        # the_order = Order.objects.create(user = request.user)
+        # instance_ids = itemInstance.objects.filter(shopping_cart__id = cart.id).values_list('id', flat=True)
+        # for x in instance_ids:
+        #     da_instance = itemInstance.objects.get(id = x)
+        #     da_instance.order = the_order
+        #     da_instance.save()
 
         customers_items_id =  [item.instanceOfItem.id for item in itemInstance.objects.filter(shopping_cart__id = cart.id)]
         for x in customers_items_id:
@@ -55,15 +57,9 @@ def checkout(request):
 
 
 
-        # customers_items_sale_count =[item.instanceOfItem.sale_count for item in itemInstance.objects.filter(shopping_cart__id = cart.id)]
-        # for y in customers_items_sale_count:
-        #     y-=1
-
-
-
         cart.amountSpent *= 100
         amountInt = int(cart.amountSpent)
-        print amountInt
+
 
         charge  = stripe.Charge.create(
             amount = amountInt,
@@ -71,15 +67,13 @@ def checkout(request):
             customer = customer,
             description = "The product charged to the user"
         )
-
-      #You Need to get the order id so that you can connect easypost
-
-
     except stripe.error.CardError as ce:
         return False, ce
     else:
-
         return render( request, "thanks.html")
+
+
+
         # The payment was successfully processed, the user's card was charged.
         # You can now redirect the user to another page or whatever you want
 
