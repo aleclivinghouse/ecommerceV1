@@ -14,11 +14,11 @@ import os
 # STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_SECRET_KEY", "pk_YOUR_TEST_PUBLIC_KEY")
 # STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "pk_YOUR_TEST_SECRET_KEY")
 
-STRIPE_PUBLIC_KEY = "pk_test_JeThQEKbOQG8Q4WnPgkJDXJY"
-STRIPE_SECRET_KEY = "sk_test_D0GIAXOoWgFXlCCiJHMP9tzC"
+STRIPE_PUBLISHABLE_KEY = 'pk_test_9cSVvZpf3Rfs4HVDTyW3JfZl'
+STRIPE_SECRET_KEY = 'sk_test_3vA9LBBprWGIUhsB7mivyHBv'
 
 
-EASYPOST_TEST_KEY = "kDBRViD7fuwv11a9miyn0w"
+# EASYPOST_TEST_KEY = "kDBRViD7fuwv11a9miyn0w"
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -217,8 +217,8 @@ ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 #test key
 #STEP1 SET YOUR STRIPE KEYS
 #NEXT go to ckeckout views
-STRIPE_PUBLIC_KEY = 'pk_test_JeThQEKbOQG8Q4WnPgkJDXJY'
-STRIPE_SECRET_KEY = 'sk_test_D0GIAXOoWgFXlCCiJHMP9tzC'
+# STRIPE_PUBLIC_KEY = 'pk_test_JeThQEKbOQG8Q4WnPgkJDXJY'
+# STRIPE_SECRET_KEY = 'sk_test_D0GIAXOoWgFXlCCiJHMP9tzC'
 
 #live key
 #STRIPE_PUBISHABLE_KEY = 'pk_test_JeThQEKbOQG8Q4WnPgkJDXJY'

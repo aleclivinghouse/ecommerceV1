@@ -30,12 +30,14 @@ urlpatterns = [
     url(r'^payment_form/$', checkout_views.payment_form, name='payment_form'),
     # url(r'^shop/$', checkout_views.shop, name='shop'),
     url(r'^shop1/$', checkout_views.shop1, name='shop1'),
-    url(r'^checkout$', checkout_views.checkout, name='checkout_page'),
+    # url(r'^checkout$', checkout_views.checkout, name='checkout_page'),
+    url(r'^checkout2$', checkout_views.checkout2, name='checkout2'),
     url(r'^update/(?P<id>\d+)$', checkout_views.update, name='update'),
     url(r'^remove/(?P<id>\d+)$', checkout_views.remove, name='remove'),
     url(r'^contact/$', contact_views.contact, name='contact'),
     url(r'^addToCart/(?P<id>\d+)$', checkout_views.addToCart, name="addToCart"),
     url(r'^accounts/', include('allauth.urls')),
+
 ]
 
 if settings.DEBUG:
